@@ -1,7 +1,20 @@
+import SideBar from "./components/SideBar";
+import LandingPage from "./pages/LandingPage";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import StudentPage from "./pages/StudentPage";
+import TeacherPage from "./pages/TeacherPage";
+
 export default function App() {
   return (
     <div className="App">
       <h1>LMS</h1>
+      <SideBar />
+      <LandingPage />
+      <SignUp />
+      <SignIn />
+      <StudentPage />
+      <TeacherPage />
     </div>
   );
 }
