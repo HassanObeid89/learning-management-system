@@ -1,7 +1,7 @@
 // NPM package
 import { createContext, useContext, useReducer, useState } from "react";
 
-// Proeject files
+// Project files
 import authReducer from "./authReducer";
 
 // Properties

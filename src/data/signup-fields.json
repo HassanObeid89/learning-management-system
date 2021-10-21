@@ -6,6 +6,12 @@
     "type": "text"
   },
   {
+    "key": "city",
+    "label": "City",
+    "placeholder": "Stockholm",
+    "type": "text"
+  },
+  {
     "key": "email",
     "label": "Email",
     "placeholder": "hassan.obeid@example.com",
