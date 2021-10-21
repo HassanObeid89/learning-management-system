@@ -9,7 +9,6 @@ import './css/style.css'
 export default function App() {
   return (
     <div className="App">
-      <h1>LMS</h1>
       <SideBar />
       <LandingPage />
       <SignUp />
