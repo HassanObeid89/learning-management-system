@@ -1,8 +1,7 @@
 import { IoHome } from "react-icons/io5";
-import { GiBlackBook } from "react-icons/gi";
+import { GiBlackBook, GiEntryDoor } from "react-icons/gi";
 import { FaVideo } from "react-icons/fa";
 import { FcCalendar } from "react-icons/fc";
-import { GrLogout } from "react-icons/gr";
 import { MdDoubleArrow } from "react-icons/md";
 export default function SideBar() {
   return (
@@ -40,7 +39,7 @@ export default function SideBar() {
         </li>
         <li>
           <span className="nav-link">
-            <GrLogout />
+            <GiEntryDoor />
             <span className="link-text">SignOut</span>
           </span>
         </li>
