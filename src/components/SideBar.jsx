@@ -1,47 +1,52 @@
+//NPM Packages
+import {Link} from 'react-router-dom'
+
+//React Icons
 import { IoHome } from "react-icons/io5";
 import { GiBlackBook, GiEntryDoor } from "react-icons/gi";
 import { FaVideo } from "react-icons/fa";
 import { FcCalendar } from "react-icons/fc";
 import { MdDoubleArrow } from "react-icons/md";
+
 export default function SideBar() {
   return (
     <nav className="navbar">
       <ul className="navbar-nav">
         <li className="logo">
-        <span className="nav-link">
+        <Link to='/' className="nav-link">
         <span className="link-text logo-text">LMS</span>
           <MdDoubleArrow />
-          </span>
+          </Link>
         </li>
         <li>
-          <span className="nav-link">
+          <Link to='/' className="nav-link">
             <IoHome />
             <span className="link-text">Home</span>
-          </span>
+          </Link>
         </li>
         <li>
-          <span className="nav-link">
+          <Link to='/student-page' className="nav-link">
             <GiBlackBook />
             <span className="link-text">Courses</span>
-          </span>
+          </Link>
         </li>
         <li>
-          <span className="nav-link">
+          <Link to='/' className="nav-link">
             <FaVideo />
             <span className="link-text">Zoom</span>
-          </span>
+          </Link>
         </li>
         <li>
-          <span className="nav-link">
+          <Link to='/' className="nav-link">
             <FcCalendar />
             <span className="link-text">Calendar</span>
-          </span>
+          </Link>
         </li>
         <li>
-          <span className="nav-link">
+          <Link to='/sign-in' className="nav-link">
             <GiEntryDoor />
             <span className="link-text">SignOut</span>
-          </span>
+          </Link>
         </li>
       </ul>
     </nav>
