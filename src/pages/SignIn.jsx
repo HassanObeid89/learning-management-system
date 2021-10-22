@@ -10,6 +10,7 @@ import {getDocument} from '../scripts/firestore';
 export default function SignIn() {
   const [values, handleChange, setValues] = useForm();
   const {dispatchUser} = useUser()
+  const {dispatchUid}=useAuth()
   const {setIsLogged} = useAuth()
   const location = useHistory()
   const [errorMessage, setErrorMessage] = useState('')

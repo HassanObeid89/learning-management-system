@@ -20,7 +20,6 @@ import {
       account.isCreated = true;
       account.payload = userCredential.user.uid;
     } catch (error) {
-      console.error("authentification.js error", error);
       account.payload = error.code;
     }
   
@@ -39,7 +38,6 @@ import {
       account.isLogged = true;
       account.payload = userCredential.user.uid;
     } catch (error) {
-      console.error("authentification.js error", error);
       account.payload = error.code;
     }
   
@@ -54,7 +52,6 @@ import {
       account.isLoggout = true;
       account.payload = "Logout successfully";
     } catch (error) {
-      console.error("authentification.js error", error);
       account.payload = error.code;
     }
   
