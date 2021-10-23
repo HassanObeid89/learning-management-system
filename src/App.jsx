@@ -1,18 +1,12 @@
 //NPM packages
 import { useState,useCallback, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { getDocument } from "./scripts/firestore";
 
 //Project files
-import SideBar from "./components/SideBar";
-import LandingPage from "./pages/LandingPage";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import StudentPage from "./pages/StudentPage";
-import TeacherPage from "./pages/TeacherPage";
 import "./css/style.css";
 import { useAuth } from "./state/AuthProvider";
 import { useUser } from "./state/UserProvider";
-import { getDocument } from "./scripts/firestore";
+import Browser from "./components/Browser";
 
 export default function App() {
     // Global state
@@ -43,16 +37,9 @@ export default function App() {
     }, [fetchUser, uid]);
   return (
     <div className="App">
-      <BrowserRouter>
-        <SideBar />
-        <Switch>
-          <Route path='/' exact component={LandingPage} />
-          <Route path='/sign-up' component={SignUp} />
-          <Route path='/sign-in' component={SignIn} />
-          <Route path='/student-page' component={StudentPage} />
-          <Route path='/teacher-page' component={TeacherPage} />
-        </Switch>
-      </BrowserRouter>
+      {status === 0 && <p>loading...</p>}
+      {status === 1 && <Browser isLogged={isLogged}/>}
+      {status === 2 && <p>Error...</p>}
     </div>
   );
 }
