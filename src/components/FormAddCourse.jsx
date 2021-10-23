@@ -39,7 +39,7 @@ export default function FormAddCourse() {
         students.
       </p>
       <form onSubmit={handleSubmit}>
-        <InputImage imgUrl={values.imgUrl || ''} label="Image" onChange={onChange} />
+        <InputImage imgUrl={values.imgUrl || ''} onChange={onChange} />
         {inputFields}
         <button>Create Course</button>
       </form>
