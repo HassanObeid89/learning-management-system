@@ -14,9 +14,8 @@ export default function SideBar() {
   const { setIsLogged } = useAuth();
   const location = useHistory();
   async function onLogout(){
-    const account = await logout();
+   await logout();
 
-    console.log("Home.jsx account", account);
     setIsLogged(false);
     location.push("/sign-in");
   }

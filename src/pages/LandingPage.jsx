@@ -3,8 +3,7 @@ import LandingBar from "../components/LandingBar";
 import hero from "../assets/images/hero-LMS.png";
 import { Link } from "react-router-dom";
 export default function LandingPage() {
-  const { user } = useUser();
-  console.log("landing page", user);
+  
   return (
     <div>
       <LandingBar />

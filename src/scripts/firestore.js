@@ -16,7 +16,6 @@ export async function createDocumentWithId(path, id, data) {
 export async function createDocument(path, data) {
   const collectionReference = collection(fireStoreInstance, path);
   const documentReference = await addDoc(collectionReference, data);
-
   return documentReference.id;
 }
 
@@ -24,7 +23,6 @@ export async function createDocument(path, data) {
 export async function getDocument(path, id) {
   const documentReference = doc(fireStoreInstance, path, id);
   const document = await getDoc(documentReference);
-
   return { id: document.id, ...document.data() };
 }
 
