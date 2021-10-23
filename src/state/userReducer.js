@@ -9,7 +9,6 @@ export default function userReducer(state, action) {
     function setUser(state, action) {
       const { payload } = action;
       if (payload !== null) return payload;
-      console.log("user reducer",payload)
       return state;
       
     }

@@ -17,7 +17,6 @@ export default function courseReducer(state, action) {
     function setCourses(state, action) {
       const { payload } = action;
       if (payload !== null) return payload;
-      console.log("user reducer",payload)
       return state;
     }
 
