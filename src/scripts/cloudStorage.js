@@ -2,7 +2,7 @@
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 // Project files
-import { cloudStorageInstance } from "scripts/firebase";
+import { cloudStorageInstance } from "./firebase";
 import readImage from './upload-image/readImage'
 import resizeImage from './upload-image/resizeImage'
 import dataUrlToFile from './upload-image/dataUrlToFile'
