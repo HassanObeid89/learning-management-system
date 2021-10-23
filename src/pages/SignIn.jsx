@@ -1,16 +1,20 @@
+//NPM packages
 import { useState } from 'react';
 import { useHistory } from 'react-router';
+import {getDocument} from '../scripts/firestore';
+
+//Project files
 import signinFields from '../data/signin-fields.json'
 import InputField from '../components/InputField';
 import useForm from '../utils/useForm';
 import { useUser } from '../state/UserProvider';
 import { useAuth } from '../state/AuthProvider';
 import { signIn } from '../scripts/Authentication';
-import {getDocument} from '../scripts/firestore';
+
+
 export default function SignIn() {
-  const [values, handleChange, setValues] = useForm();
+  const [values, handleChange] = useForm();
   const {dispatchUser} = useUser()
-  const {dispatchUid}=useAuth()
   const {setIsLogged} = useAuth()
   const location = useHistory()
   const [errorMessage, setErrorMessage] = useState('')
@@ -44,6 +48,7 @@ export default function SignIn() {
       <h1>SignIn</h1>
       <form onSubmit={handleSubmit}>
         {inputFields}
+        {errorMessage}
         <button>Sign in</button>
       </form>
     </div>

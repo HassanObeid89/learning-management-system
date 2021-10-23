@@ -1,38 +1,35 @@
 //NPM packages
 import { useState,useCallback, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { getDocument } from "./scripts/firestore";
 
 //Project files
-import SideBar from "./components/SideBar";
-import LandingPage from "./pages/LandingPage";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import StudentPage from "./pages/StudentPage";
-import TeacherPage from "./pages/TeacherPage";
 import "./css/style.css";
 import { useAuth } from "./state/AuthProvider";
 import { useUser } from "./state/UserProvider";
-import { getDocument } from "./scripts/firestore";
+import Browser from "./components/Browser";
 
 export default function App() {
     // Global state
     const { uid, setIsLogged, isLogged } = useAuth();
     const { dispatchUser } = useUser();
-  
+    console.log("where is the uid",uid)
     // Local state
-    const [status, setStatus] = useState(0); // 0 pending, 1 ready, 2 error
+    const [status, setStatus] = useState(1); // 0 pending, 1 ready, 2 error
   
     // Methods
     const fetchUser = useCallback(
       async (path, uid) => {
         if (uid === "no user") {
           setStatus(1);
+          console.log(uid)
         } else if (uid !== "") {
           const user = await getDocument(path, uid);
   
           dispatchUser({type:"SET_USER", payload:user});
           setIsLogged(true);
           setStatus(1);
+          console.log(status)
+          console.log(uid)
         }
       },
       [setIsLogged, dispatchUser]
@@ -40,19 +37,13 @@ export default function App() {
   
     useEffect(() => {
       fetchUser("users", uid);
+      console.log(uid)
     }, [fetchUser, uid]);
   return (
     <div className="App">
-      <BrowserRouter>
-        <SideBar />
-        <Switch>
-          <Route path='/' exact component={LandingPage} />
-          <Route path='/sign-up' component={SignUp} />
-          <Route path='/sign-in' component={SignIn} />
-          <Route path='/student-page' component={StudentPage} />
-          <Route path='/teacher-page' component={TeacherPage} />
-        </Switch>
-      </BrowserRouter>
+      {status === 0 && <p>loading...</p>}
+      {status === 1 && <Browser isLogged={isLogged}/>}
+      {status === 2 && <p>Error...</p>}
     </div>
   );
 }
