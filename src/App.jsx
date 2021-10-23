@@ -27,7 +27,7 @@ const {dispatchCourse} = useCourse()
         const user = await getDocument(path, uid);
 
         dispatchUser({ type: "SET_USER", payload: user });
-        setIsLogged(true);
+        
         setStatus(1);
       }
     },
@@ -38,8 +38,8 @@ const {dispatchCourse} = useCourse()
     async (path) => {
       try {
         const courses = await getCollection(path);
-
         dispatchCourse({ type: "SET_COURSES", payload: courses });
+        setIsLogged(true);
       } catch {
         setStatus(2);
       }

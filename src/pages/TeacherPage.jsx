@@ -4,6 +4,7 @@ import {useCourse} from '../state/CourseProvider'
 
 export default function TeacherPage() {
     const {course}=useCourse()
+    console.log(course)
     const courses = course.map(course=><CourseCard course={course}/>)
     return (
         <div>

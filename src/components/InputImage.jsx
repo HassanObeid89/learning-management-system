@@ -5,7 +5,6 @@ import { uploadImage } from "../scripts/cloudStorage";
 export default function InputImage({ onChange, imgUrl }) {
   const image = imgUrl === '' ? Placeholder : imgUrl;
 
-  console.log(image);
   // Methods
   async function onFileChange(event) {
     const imgName = event.target.files[0].name.split(".")[0];
