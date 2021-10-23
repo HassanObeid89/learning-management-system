@@ -1,5 +1,5 @@
 //NPM Packages
-import {Link} from 'react-router-dom'
+import {Link,useHistory} from 'react-router-dom'
 
 //React Icons
 import { IoHome } from "react-icons/io5";
@@ -7,8 +7,19 @@ import { GiBlackBook, GiEntryDoor } from "react-icons/gi";
 import { FaVideo } from "react-icons/fa";
 import { FcCalendar } from "react-icons/fc";
 import { MdDoubleArrow } from "react-icons/md";
+import {useAuth} from '../state/AuthProvider'
+import {logout} from '../scripts/Authentication'
 
 export default function SideBar() {
+  const { setIsLogged } = useAuth();
+  const location = useHistory();
+  async function onLogout(){
+    const account = await logout();
+
+    console.log("Home.jsx account", account);
+    setIsLogged(false);
+    location.push("/sign-in");
+  }
   return (
     <nav className="navbar">
       <ul className="navbar-nav">
@@ -43,10 +54,10 @@ export default function SideBar() {
           </Link>
         </li>
         <li>
-          <Link to='/sign-in' className="nav-link">
+          <button onClick={onLogout} className="nav-link">
             <GiEntryDoor />
             <span className="link-text">SignOut</span>
-          </Link>
+          </button>
         </li>
       </ul>
     </nav>

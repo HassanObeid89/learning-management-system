@@ -1,4 +1,5 @@
 //NPM packages
+import { useState,useCallback, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 //Project files
@@ -9,8 +10,37 @@ import SignUp from "./pages/SignUp";
 import StudentPage from "./pages/StudentPage";
 import TeacherPage from "./pages/TeacherPage";
 import "./css/style.css";
+import { useAuth } from "./state/AuthProvider";
+import { useUser } from "./state/UserProvider";
+import { getDocument } from "./scripts/firestore";
 
 export default function App() {
+    // Global state
+    const { uid, setIsLogged, isLogged } = useAuth();
+    const { dispatchUser } = useUser();
+  
+    // Local state
+    const [status, setStatus] = useState(0); // 0 pending, 1 ready, 2 error
+  
+    // Methods
+    const fetchUser = useCallback(
+      async (path, uid) => {
+        if (uid === "no user") {
+          setStatus(1);
+        } else if (uid !== "") {
+          const user = await getDocument(path, uid);
+  
+          dispatchUser({type:"SET_USER", payload:user});
+          setIsLogged(true);
+          setStatus(1);
+        }
+      },
+      [setIsLogged, dispatchUser]
+    );
+  
+    useEffect(() => {
+      fetchUser("users", uid);
+    }, [fetchUser, uid]);
   return (
     <div className="App">
       <BrowserRouter>
