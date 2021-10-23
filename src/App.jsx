@@ -7,12 +7,14 @@ import "./css/style.css";
 import { useAuth } from "./state/AuthProvider";
 import { useUser } from "./state/UserProvider";
 import Browser from "./components/Browser";
+import {getCollection} from './scripts/firestore'
+import { useCourse } from "./state/CourseProvider";
 
 export default function App() {
   // Global state
   const { uid, setIsLogged, isLogged } = useAuth();
   const { dispatchUser } = useUser();
-
+const {dispatchCourse} = useCourse()
   // Local state
   const [status, setStatus] = useState(1); // 0 pending, 1 ready, 2 error
 
@@ -32,8 +34,24 @@ export default function App() {
     [setIsLogged, dispatchUser]
   );
 
-  useEffect(() => fetchUser("users", uid), [fetchUser, uid]);
-  
+  const fetchCourses = useCallback(
+    async (path) => {
+      try {
+        const courses = await getCollection(path);
+
+        dispatchCourse({ type: "SET_COURSES", payload: courses });
+      } catch {
+        setStatus(2);
+      }
+    },
+    [dispatchCourse]
+  );
+
+  useEffect(() => {
+    fetchUser("users", uid)
+    fetchCourses('courses')
+}, [fetchUser, uid,fetchCourses]);
+
   return (
     <div className="App">
       {status === 0 && <p>loading...</p>}
