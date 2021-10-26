@@ -1,4 +1,3 @@
-import { useUser } from "../state/UserProvider";
 import LandingBar from "../components/LandingBar";
 import hero from "../assets/images/hero-LMS.png";
 import { Link } from "react-router-dom";

@@ -5,11 +5,14 @@ import useForm from "../utils/useForm";
 import { useCourse } from "../state/CourseProvider";
 import { createDocument } from "../scripts/firestore";
 import InputImage from "./InputImage";
+import { useState } from "react";
+import MultipleUploadField from "./MultipleUploadField";
 
 export default function FormAddCourse() {
   const [values, handleChange, setValues] = useForm();
   const { dispatchCourse } = useCourse();
   const location = useHistory();
+  const [files, setFiles] = useState([]);
 
   function onChange(key, value) {
     const imgField = { [key]: value };
@@ -20,8 +23,8 @@ export default function FormAddCourse() {
     event.preventDefault();
     const newCourse = {
       ...values,
+      files: files,
     };
-    console.log(values);
     createDocument("courses", newCourse);
     setValues({});
     dispatchCourse({ type: "ADD_COURSE", payload: newCourse });
@@ -30,7 +33,12 @@ export default function FormAddCourse() {
   }
 
   const inputFields = addCoursefeilds.map((input) => (
-    <InputField options={input} handleChange={handleChange} values={values} />
+    <InputField
+      key={input.key}
+      options={input}
+      handleChange={handleChange}
+      values={values}
+    />
   ));
   return (
     <div>
@@ -39,8 +47,9 @@ export default function FormAddCourse() {
         students.
       </p>
       <form onSubmit={handleSubmit}>
-        <InputImage imgUrl={values.imgUrl || ''} onChange={onChange} />
+        <InputImage imgUrl={values.imgUrl || ""} onChange={onChange} />
         {inputFields}
+        <MultipleUploadField setFiles={setFiles} />
         <button>Create Course</button>
       </form>
     </div>

@@ -6,7 +6,7 @@ export default function InputImage({ onChange, imgUrl }) {
   const image = imgUrl === '' ? Placeholder : imgUrl;
 
   // Methods
-  async function onFileChange(event) {
+  async function onImageChange(event) {
     const imgName = event.target.files[0].name.split(".")[0];
     const image_url = await uploadImage(event, imgName);
     onChange("imgUrl", image_url);
@@ -16,7 +16,7 @@ export default function InputImage({ onChange, imgUrl }) {
     <fieldset className="input-image">
       <label className="image-chooser">
         <span>Choose Image</span>
-        <input onChange={(event) => onFileChange(event)} type="file" />
+        <input onChange={(event) => onImageChange(event)} type="file" />
         <img src={image} alt="" />
       </label>
     </fieldset>
