@@ -7,50 +7,49 @@ import "./css/style.css";
 import { useAuth } from "./state/AuthProvider";
 import { useUser } from "./state/UserProvider";
 import Browser from "./components/Browser";
-import {getCollection} from './scripts/firestore'
+import { getCollection } from "./scripts/firestore";
 import { useCourse } from "./state/CourseProvider";
 
 export default function App() {
   // Global state
   const { uid, setIsLogged, isLogged } = useAuth();
   const { dispatchUser } = useUser();
-const {dispatchCourse} = useCourse()
+  const { dispatchCourse } = useCourse();
   // Local state
   const [status, setStatus] = useState(1); // 0 pending, 1 ready, 2 error
 
   // Methods
+  const fetchCourses = useCallback(
+    async (path) => {
+      try {
+        const courses = await getCollection(path);
+        dispatchCourse({ type: "SET_COURSES", payload: courses });
+        setIsLogged(true);
+      } catch {
+        setStatus(2);
+      }
+    },
+    [dispatchCourse,setIsLogged]
+  );
+
   const fetchUser = useCallback(
     async (path, uid) => {
       if (uid === "no user") {
         setStatus(1);
       } else if (uid !== "") {
         const user = await getDocument(path, uid);
-
         dispatchUser({ type: "SET_USER", payload: user });
-        setIsLogged(true);
+
         setStatus(1);
       }
     },
-    [setIsLogged, dispatchUser]
-  );
-
-  const fetchCourses = useCallback(
-    async (path) => {
-      try {
-        const courses = await getCollection(path);
-
-        dispatchCourse({ type: "SET_COURSES", payload: courses });
-      } catch {
-        setStatus(2);
-      }
-    },
-    [dispatchCourse]
+    [dispatchUser]
   );
 
   useEffect(() => {
-    fetchUser("users", uid)
-    fetchCourses('courses')
-}, [fetchUser, uid,fetchCourses]);
+    fetchCourses("courses");
+    fetchUser("users", uid);
+  }, [fetchUser, uid, fetchCourses]);
 
   return (
     <div className="App">
