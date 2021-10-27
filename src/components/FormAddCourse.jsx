@@ -6,7 +6,7 @@ import { useHistory } from "react-router";
 import addCoursefeilds from "../data/addCourse-fields.json";
 import InputField from "./InputField";
 import useForm from "../utils/useForm";
-import { useCourse } from "../state/CourseProvider";
+import { useCourse } from "../state/CoursesProvider";
 import { createDocument } from "../scripts/firestore";
 import InputImage from "./InputImage";
 import MultipleUploadField from "./MultipleUploadField";
@@ -14,7 +14,7 @@ import VideoField from "./VideoField";
 
 export default function FormAddCourse() {
   //Global state
-  const { dispatchCourse } = useCourse();
+  const { dispatchCourses } = useCourse();
 
   //local state
   const [values, handleChange, setValues] = useForm();
@@ -40,8 +40,7 @@ export default function FormAddCourse() {
     createDocument("courses", newCourse);
     setValues({});
     setFiles([]);
-    dispatchCourse({ type: "ADD_COURSE", payload: newCourse });
-    console.log(newCourse)
+    dispatchCourses({ type: "ADD_COURSE", payload: newCourse });
     alert("Course Added");
     location.goBack();
   }
@@ -51,7 +50,6 @@ export default function FormAddCourse() {
       key={input.key}
       options={input}
       handleChange={handleChange}
-      values={values}
     />
   ));
   return (

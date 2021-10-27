@@ -8,13 +8,13 @@ import { useAuth } from "./state/AuthProvider";
 import { useUser } from "./state/UserProvider";
 import Browser from "./components/Browser";
 import { getCollection } from "./scripts/firestore";
-import { useCourse } from "./state/CourseProvider";
+import { useCourse } from "./state/CoursesProvider";
 
 export default function App() {
   // Global state
   const { uid, setIsLogged, isLogged } = useAuth();
   const { dispatchUser } = useUser();
-  const { dispatchCourse } = useCourse();
+  const { dispatchCourses } = useCourse();
   // Local state
   const [status, setStatus] = useState(1); // 0 pending, 1 ready, 2 error
 
@@ -23,13 +23,13 @@ export default function App() {
     async (path) => {
       try {
         const courses = await getCollection(path);
-        dispatchCourse({ type: "SET_COURSES", payload: courses });
+        dispatchCourses({ type: "SET_COURSES", payload: courses });
         setIsLogged(true);
       } catch {
         setStatus(2);
       }
     },
-    [dispatchCourse,setIsLogged]
+    [dispatchCourses,setIsLogged]
   );
 
   const fetchUser = useCallback(

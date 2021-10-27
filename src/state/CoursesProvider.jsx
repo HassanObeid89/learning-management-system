@@ -7,13 +7,13 @@ import courseReducer from './courseReducer'
 // Properties
 const UserContext = createContext(null);
 
-export function CourseProvider({ children }) {
+export function CoursesProvider({ children }) {
   // Local state
-  const [course, dispatchCourse] = useReducer(courseReducer,{});
+  const [courses, dispatchCourses] = useReducer(courseReducer,{});
 
 
   return (
-    <UserContext.Provider value={{ course, dispatchCourse }}>
+    <UserContext.Provider value={{ courses: courses, dispatchCourses: dispatchCourses }}>
       {children}
     </UserContext.Provider>
   );

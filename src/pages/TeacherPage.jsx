@@ -1,17 +1,15 @@
 import { Link } from "react-router-dom"
 import CourseCard from "../components/CourseCard"
-import {useCourse} from '../state/CourseProvider'
+import {useCourse} from '../state/CoursesProvider'
 
 export default function TeacherPage() {
-    const {course}=useCourse()
-    const courses = course.map(course=><CourseCard key={course.id} course={course}/>)
+    const {courses}=useCourse()
+    const course = courses.map(course=><CourseCard key={course.id} course={course}/>)
     return (
-        <div>
+        <div >
             <h1>TeacherPage</h1>
-            <ul>{courses}</ul>
-            <Link to='/add-course'>
-            <button>Add New Cource</button>
-            </Link>
+            <ul>{course}</ul>
+            <Link to='/add-course'>Edit</Link>
         </div>
     )
 }

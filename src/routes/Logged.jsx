@@ -7,6 +7,7 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import CoursesPage from "../pages/CoursesPage";
 import FormAddCourse from "../components/FormAddCourse";
+import CoursePage from '../pages/CoursePage';
 export default function Logged() {
   return (
     <>
@@ -15,6 +16,7 @@ export default function Logged() {
       <Route component={SignIn} path="/sign-in" />
       <Route component={SignUp} path="/sign-up" />
       <Route component={FormAddCourse} path='/add-course' />
+      <Route component={CoursePage} path='/course-page/:id'/>
     </>
   );
 }
