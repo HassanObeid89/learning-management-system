@@ -10,7 +10,6 @@ export default function CourseCard({course,onDelete}) {
                 <img src={imgUrl} alt=''/>
                 <h3>{name}</h3>
                 <p>{description}</p>
-                <p>{id}</p>
                 <Link to={`/course-page/${id}`}>Go</Link>
                 <br/>
                 <Link to={`/add-course/${id}`}>Edit</Link>

@@ -61,6 +61,7 @@ export default function FormAddCourse() {
     event.preventDefault();
     const updatedCourse = {
       ...values,
+      imgUrl:course.imgUrl,
       files: files,
       videos: videosList,
     };
@@ -104,7 +105,7 @@ export default function FormAddCourse() {
         </label>
         <MultipleUploadField setFiles={setFiles} files={files} />
         <VideoField
-          data={[
+          state={[
             videoLink,
             setVideoLink,
             videoName,

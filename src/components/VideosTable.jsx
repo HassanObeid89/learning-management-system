@@ -1,5 +1,10 @@
-export default function VideosTable({ data }) {
+export default function VideosTable({ data,setVideosList }) {
+
   const { name, link } = data;
+  function onDelete(event){
+    event.preventDefault()
+    setVideosList((curr)=>curr.filter((video)=>video!==data))
+  }
   return (
     <table>
       <thead>
@@ -10,8 +15,9 @@ export default function VideosTable({ data }) {
       </thead>
       <tbody>
         <tr>
-          <td><input type='text'value={name}/></td>
-          <td><input type='text'value={link}/></td>
+          <td>{name}</td>
+          <td>{link}</td>
+          <td><button onClick={(event)=>onDelete(event)}>Delete</button></td>
         </tr>
       </tbody>
     </table>

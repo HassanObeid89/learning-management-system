@@ -17,8 +17,7 @@ export default function MultipleUploadField({ setFiles, files }) {
   );
     function onDelete(event,file){
       event.preventDefault()
-      setFiles((curr)=>curr.filter((fi)=>fi.name!==file))
-      console.log(file)
+      setFiles((curr)=>curr.filter((item)=>item.name!==file))
     }
 
   const file = files.map((file, index) => <FilesList key={index} file={file} onDelete={onDelete}/>);
