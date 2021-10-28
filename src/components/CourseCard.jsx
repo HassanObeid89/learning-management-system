@@ -2,6 +2,7 @@ import {Link} from 'react-router-dom'
 
 export default function CourseCard({course}) {
     const {id,name, description,imgUrl} = course
+
     return (
         <div>
             <li>
@@ -10,6 +11,9 @@ export default function CourseCard({course}) {
                 <p>{description}</p>
                 <p>{id}</p>
                 <Link to={`/course-page/${id}`}>Go</Link>
+                <br/>
+                <Link to={`/add-course/${id}`}>Edit</Link>
+                
             </li>
         </div>
     )

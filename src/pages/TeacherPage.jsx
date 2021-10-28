@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import CourseCard from "../components/CourseCard"
 import {useCourse} from '../state/CoursesProvider'
 
@@ -9,7 +8,6 @@ export default function TeacherPage() {
         <div >
             <h1>TeacherPage</h1>
             <ul>{course}</ul>
-            <Link to='/add-course'>Edit</Link>
         </div>
     )
 }

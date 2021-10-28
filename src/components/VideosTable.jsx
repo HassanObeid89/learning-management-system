@@ -1,6 +1,5 @@
 export default function VideosTable({ data }) {
   const { name, link } = data;
-
   return (
     <table>
       <thead>
@@ -11,8 +10,8 @@ export default function VideosTable({ data }) {
       </thead>
       <tbody>
         <tr>
-          <td>{name}</td>
-          <td>{link}</td>
+          <td><input type='text'value={name}/></td>
+          <td><input type='text'value={link}/></td>
         </tr>
       </tbody>
     </table>

@@ -37,8 +37,8 @@ export async function getCollection(path) {
 }
 
 // Update
-export async function updateDocument(path, data) {
-  const documentReference = doc(fireStoreInstance, path, data.id);
+export async function updateDocument(path, data,id) {
+  const documentReference = doc(fireStoreInstance, path, id);
 
   await updateDoc(documentReference, data);
 }

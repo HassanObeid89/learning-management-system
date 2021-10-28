@@ -8,7 +8,7 @@ export default function CoursesPage() {
     return (
         <div>
             {user.role === 'student' ? <StudentPage/>:<TeacherPage/>}
-            <Link to='/add-course'>
+            <Link to='/add-course/new-course'>
             Add New Course
             </Link>
         </div>

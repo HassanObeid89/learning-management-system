@@ -3,8 +3,8 @@ import Placeholder from "../assets/images/placeholder-image.png";
 import { uploadImage } from "../scripts/cloudStorage";
 
 export default function InputImage({ onChange, imgUrl }) {
-  const image = imgUrl === '' ? Placeholder : imgUrl;
-
+  const image = imgUrl === undefined ? Placeholder : imgUrl;
+  
   // Methods
   async function onImageChange(event) {
     const imgName = event.target.files[0].name.split(".")[0];

@@ -15,7 +15,7 @@ export default function Logged() {
       <Route component={CoursesPage} exact path="/" />
       <Route component={SignIn} path="/sign-in" />
       <Route component={SignUp} path="/sign-up" />
-      <Route component={FormAddCourse} path='/add-course' />
+      <Route component={FormAddCourse} path='/add-course/:id' />
       <Route component={CoursePage} path='/course-page/:id'/>
     </>
   );
