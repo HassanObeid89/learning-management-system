@@ -1,6 +1,6 @@
 // NPM packages
 import { collection, doc, getDocs } from "firebase/firestore/lite";
-import { addDoc, setDoc, updateDoc, getDoc } from "firebase/firestore/lite";
+import { addDoc, setDoc, updateDoc, getDoc,deleteDoc } from "firebase/firestore/lite";
 
 // Project files
 import { fireStoreInstance } from "./firebase";
@@ -41,4 +41,11 @@ export async function updateDocument(path, data,id) {
   const documentReference = doc(fireStoreInstance, path, id);
 
   await updateDoc(documentReference, data);
+}
+
+//Delete
+export async function deleteDocument(path, id) {
+  const docReference = doc(fireStoreInstance, path, id);
+
+  await deleteDoc(docReference);
 }

@@ -21,13 +21,13 @@ export default function courseReducer(state, action) {
     if (payload !== null) return payload;
     return state;
   }
-  
+
   function updateCourse(state, action) {
     const { payload } = action;
     const course = payload;
     const newState = [...state];
     const index = newState.findIndex((item) => item.id === course.id);
-  
+
     newState[index] = { ...course };
     return newState;
   }
