@@ -1,16 +1,26 @@
-import { Link } from "react-router-dom"
-import StudentPage from "./StudentPage";
-import TeacherPage from "./TeacherPage";
-import {useUser} from '../state/UserProvider'
+import { Link } from "react-router-dom";
+import CourseCard from "../components/CourseCard";
+import { useCourse } from "../state/CoursesProvider";
+import { deleteDocument } from "../scripts/firestore";
 
 export default function CoursesPage() {
-    const {user} = useUser()
-    return (
-        <div>
-            {user.role === 'student' ? <StudentPage/>:<TeacherPage/>}
-            <Link to='/add-course/new-course'>
-            Add New Course
-            </Link>
-        </div>
-    )
+  const { courses, dispatchCourses } = useCourse();
+
+  async function onDelete(id) {
+    await deleteDocument("courses", id);
+    const updated = courses.filter((course) => course.id !== id);
+    alert("deleted");
+    dispatchCourses({ type: "SET_COURSES", payload: updated });
+  }
+
+  const course = courses.map((course) => (
+    <CourseCard key={course.id} onDelete={onDelete} course={course} />
+  ));
+  return (
+    <div>
+      <h1>CoursesPage</h1>
+      <ul>{course}</ul>
+      <Link to="/add-course/new-course">Add New Course</Link>
+    </div>
+  );
 }
