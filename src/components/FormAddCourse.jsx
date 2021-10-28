@@ -5,7 +5,7 @@ import { useHistory, useParams } from "react-router-dom";
 //Project files
 import useForm from "../utils/useForm";
 import { useCourse } from "../state/CoursesProvider";
-import { createDocument,updateDocument } from "../scripts/firestore";
+import { createDocument, updateDocument } from "../scripts/firestore";
 import InputImage from "./InputImage";
 import MultipleUploadField from "./MultipleUploadField";
 import VideoField from "./VideoField";
@@ -36,6 +36,11 @@ export default function FormAddCourse() {
     setValues({ ...values, ...imgField });
   }
 
+  function onSave(event) {
+    id === "new-course" ? onCreate(event) : onUpdate(event);
+    location.goBack();
+  }
+
   async function onCreate(event) {
     event.preventDefault();
     const newCourse = {
@@ -44,27 +49,26 @@ export default function FormAddCourse() {
       videos: videosList,
     };
     const id = await createDocument("courses", newCourse);
-    newCourse.id=id
+    newCourse.id = id;
     dispatchCourses({ type: "ADD_COURSE", payload: newCourse });
     console.log(newCourse);
     alert("Course Added");
     setValues({});
     setFiles([]);
-    location.goBack();
   }
-  async function onupdate(event){
-    event.preventDefault()
+
+  async function onUpdate(event) {
+    event.preventDefault();
     const updatedCourse = {
       ...values,
       files: files,
       videos: videosList,
     };
-    await updateDocument('courses',updatedCourse,course.id)
-    updatedCourse.id = course.id
+    await updateDocument("courses", updatedCourse, course.id);
+    updatedCourse.id = course.id;
     dispatchCourses({ type: "UPDATE_COURSE", payload: updatedCourse });
-    console.log(updatedCourse)
-    alert("Course updated")
-    location.goBack()
+    console.log(updatedCourse);
+    alert("Course updated");
   }
 
   return (
@@ -94,7 +98,7 @@ export default function FormAddCourse() {
             type="text"
             value={values.description || course.description}
             onChange={(event) =>
-            handleChange("description", event.target.value)
+              handleChange("description", event.target.value)
             }
           />
         </label>
@@ -109,8 +113,7 @@ export default function FormAddCourse() {
             setVideosList,
           ]}
         />
-        <button onClick={(event) => onCreate(event)}>Create Course</button>
-        <button onClick={(event) => onupdate(event)}>update Course</button>
+        <button onClick={(event) => onSave(event)}>Submit</button>
       </form>
     </div>
   );
