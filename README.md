@@ -4,6 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This is a Learnin management system web app, that allow Students to learn how to code online and the teacher to add, update and delete courses.
 
+User name: teacher@teacher.com
+Password: 12345678
+
 The project is done with the latest version of React and uses functional components with Hooks for better modularity in case it needs to be expanded and firebase services for backend.
 
 ---
