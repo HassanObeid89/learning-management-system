@@ -45,7 +45,7 @@ export default function SignIn() {
   ));
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Sign In</h2>
+      <h2>Start Learning . . .</h2>
       {inputFields}
       {errorMessage}
       <Link to="/forgot-password">Forget Password?</Link>
