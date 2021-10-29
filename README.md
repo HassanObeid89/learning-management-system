@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# 1. Vegan Restuarant app
+# 1. LEARNING MANAGEMENT SYSTEM App
 
 This is a Learnin management system web app, that allow Students to learn how to code online and the teacher to add, update and delete courses.
 
