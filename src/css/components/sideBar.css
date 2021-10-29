@@ -30,6 +30,7 @@
   position: fixed;
   box-shadow: 2px -5px 15px 2px #dbdbdb;
   transition: width 200ms ease;
+  z-index: 1000;
 }
 
 .navbar-nav {
@@ -37,6 +38,7 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
+  background-color: white;
 }
 .navbar-nav li {
   width: 100%;

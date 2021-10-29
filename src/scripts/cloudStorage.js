@@ -17,9 +17,9 @@ export async function uploadFile(file, filename) {
 export async function uploadImage(event, filename) {
   const file = event.target.files[0];
   const originalImage = await readImage(file);
-  const resizedImaged = await resizeImage(originalImage, 80, 80);
+  //const resizedImaged = await resizeImage(originalImage, 80, 80);
   const imageForFirebase = await dataUrlToFile(
-    resizedImaged,
+    originalImage,
     `${filename}.png`
   );
   const newImageURL = await uploadFile(imageForFirebase, filename);

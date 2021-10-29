@@ -11,12 +11,12 @@ import CoursePage from "../pages/CoursePage";
 export default function Logged() {
   return (
     <>
-      <Route component={SideBar} />
       <Route component={CoursesPage} exact path="/" />
       <Route component={SignIn} path="/sign-in" />
       <Route component={SignUp} path="/sign-up" />
       <Route component={FormAddCourse} path="/add-course/:id" />
       <Route component={CoursePage} path="/course-page/:id" />
+      <Route component={SideBar} />
     </>
   );
 }

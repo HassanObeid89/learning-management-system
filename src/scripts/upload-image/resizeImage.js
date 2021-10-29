@@ -1,4 +1,4 @@
-export default async function resizeImage(image, width = 200, height = 200) {
+export default async function resizeImage(image, width = 800, height = 800) {
   const canvas = document.createElement("canvas");
   const originalContext = canvas.getContext("2d");
   const resizedContext = canvas.getContext("2d");
