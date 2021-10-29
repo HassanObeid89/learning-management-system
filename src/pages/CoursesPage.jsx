@@ -6,12 +6,12 @@ import CourseCard from "../components/CourseCard";
 import { useCourse } from "../state/CoursesProvider";
 import { useUser } from "../state/UserProvider";
 import { deleteDocument } from "../scripts/firestore";
-import {ImPlus} from 'react-icons/im'
+import { ImPlus } from "react-icons/im";
 export default function CoursesPage() {
   const { courses, dispatchCourses } = useCourse();
   const { user } = useUser();
   async function onDelete(id) {
-    prompt('Are You Sure?')
+    prompt("Are You Sure?");
     await deleteDocument("courses", id);
     const updated = courses.filter((course) => course.id !== id);
     alert("deleted");
@@ -22,14 +22,16 @@ export default function CoursesPage() {
     <CourseCard key={course.id} onDelete={onDelete} course={course} />
   ));
   return (
-    <div className='courses-page'>
+    <div className="courses-page">
       {user.role === "teacher" ? <h2>Courses</h2> : <h2>Your Courses</h2>}
       <ul>{course}</ul>
-      <section className='round-btn'>
       {user.role === "teacher" && (
-        <Link to="/add-course/new-course"><ImPlus/></Link>
+        <section className="round-btn">
+          <Link to="/add-course/new-course">
+            <ImPlus />
+          </Link>
+        </section>
       )}
-      </section>
     </div>
   );
 }

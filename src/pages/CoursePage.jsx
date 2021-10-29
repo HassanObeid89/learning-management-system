@@ -15,12 +15,10 @@ export default function CoursePage() {
   const videosList = course.videos.map((video) => <VideoItem data={video} />);
 
   return (
-    <div>
-      <img src={imgUrl} alt="" />
-      {name}
-      {description}
+    <div className='course-page'>
+      <img className='hero' src={imgUrl} alt="" />
       <h2>Files</h2>
-      {filesList}
+      <ul>{filesList}</ul>
       <h2>Videos</h2>
       {videosList}
     </div>
