@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 //Project files
 import CourseCard from "../components/CourseCard";
 import { useCourse } from "../state/CoursesProvider";
+import {useUser} from '../state/UserProvider'
 import { deleteDocument } from "../scripts/firestore";
 
 export default function CoursesPage() {
   const { courses, dispatchCourses } = useCourse();
-
+  const {user} = useUser()
   async function onDelete(id) {
     await deleteDocument("courses", id);
     const updated = courses.filter((course) => course.id !== id);
@@ -23,7 +24,7 @@ export default function CoursesPage() {
     <div>
       <h1>CoursesPage</h1>
       <ul>{course}</ul>
-      <Link to="/add-course/new-course">Add New Course</Link>
+      {user.role === 'teacher' && <Link to="/add-course/new-course">Add New Course</Link>}
     </div>
   );
 }
