@@ -1,6 +1,6 @@
 import VideosTable from "./VideosTable";
 
-export default function VideoField({ data }) {
+export default function VideoField({ state }) {
   const [
     videoLink,
     setVideoLink,
@@ -8,7 +8,7 @@ export default function VideoField({ data }) {
     setVideoName,
     videosList,
     setVideosList,
-  ] = data;
+  ] = state;
 
   function onSubmit(event) {
     event.preventDefault();
@@ -22,7 +22,7 @@ export default function VideoField({ data }) {
   }
 
   const video = videosList.map((video, index) => (
-    <VideosTable key={index} data={video} />
+    <VideosTable key={index} setVideosList={setVideosList} data={video} />
   ));
   return (
     <fieldset>

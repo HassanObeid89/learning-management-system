@@ -1,73 +1,118 @@
 //Npm package
 import { useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router-dom";
 
 //Project files
-import addCoursefeilds from "../data/addCourse-fields.json";
-import InputField from "./InputField";
 import useForm from "../utils/useForm";
-import { useCourse } from "../state/CourseProvider";
-import { createDocument } from "../scripts/firestore";
+import { useCourse } from "../state/CoursesProvider";
+import { createDocument, updateDocument } from "../scripts/firestore";
 import InputImage from "./InputImage";
 import MultipleUploadField from "./MultipleUploadField";
 import VideoField from "./VideoField";
 
 export default function FormAddCourse() {
+  const { id } = useParams();
   //Global state
-  const { dispatchCourse } = useCourse();
+  const { courses, dispatchCourses } = useCourse();
 
   //local state
-  const [values, handleChange, setValues] = useForm();
-  const [files, setFiles] = useState([]);
-  const [videoLink, setVideoLink] = useState('');
-  const [videosList, setVideosList] = useState([]);
+  const [course] = useState(findCourse(courses, id));
+  const [values, handleChange, setValues] = useForm(course);
+  const [files, setFiles] = useState(course.files || []);
+  const [videoLink, setVideoLink] = useState("");
+  const [videosList, setVideosList] = useState(course.videos || []);
   const [videoName, setVideoName] = useState("");
   const location = useHistory();
 
   //Methods
+  function findCourse(courses, id) {
+    const existingCourse = courses.find((course) => course.id === id);
+
+    return existingCourse === undefined ? {} : existingCourse;
+  }
+
   function onChange(key, value) {
     const imgField = { [key]: value };
     setValues({ ...values, ...imgField });
   }
 
-  function handleSubmit(event) {
+  function onSave(event) {
+    id === "new-course" ? onCreate(event) : onUpdate(event);
+    location.goBack();
+  }
+
+  async function onCreate(event) {
     event.preventDefault();
     const newCourse = {
       ...values,
       files: files,
-      videos:videosList
+      videos: videosList,
     };
-    createDocument("courses", newCourse);
+    const id = await createDocument("courses", newCourse);
+    newCourse.id = id;
+    dispatchCourses({ type: "ADD_COURSE", payload: newCourse });
+    alert("Course Added");
     setValues({});
     setFiles([]);
-    dispatchCourse({ type: "ADD_COURSE", payload: newCourse });
-    console.log(newCourse)
-    alert("Course Added");
-    location.goBack();
   }
-  
-  const inputFields = addCoursefeilds.map((input) => (
-    <InputField
-      key={input.key}
-      options={input}
-      handleChange={handleChange}
-      values={values}
-    />
-  ));
+
+  async function onUpdate(event) {
+    event.preventDefault();
+    const updatedCourse = {
+      ...values,
+      imgUrl: course.imgUrl,
+      files: files,
+      videos: videosList,
+    };
+    await updateDocument("courses", updatedCourse, course.id);
+    updatedCourse.id = course.id;
+    dispatchCourses({ type: "UPDATE_COURSE", payload: updatedCourse });
+    alert("Course updated");
+  }
+
   return (
     <div>
       <p>
         Create new course by adding videos, slides, pdf and assignments for your
         students.
       </p>
-      <form onSubmit={handleSubmit}>
-        <InputImage imgUrl={values.imgUrl || ""} onChange={onChange} />
-        {inputFields}
+      <form>
+        <InputImage
+          imgUrl={values.imgUrl || course.imgUrl}
+          onChange={onChange}
+        />
+        <label>
+          Course Name
+          <input
+            placeholder="React"
+            type="text"
+            value={values.name || course.name}
+            onChange={(event) => handleChange("name", event.target.value)}
+          />
+        </label>
+        <label>
+          Description
+          <input
+            placeholder="The Most Populer JavaScript Library "
+            type="text"
+            value={values.description || course.description}
+            onChange={(event) =>
+              handleChange("description", event.target.value)
+            }
+          />
+        </label>
         <MultipleUploadField setFiles={setFiles} files={files} />
         <VideoField
-          data={[videoLink, setVideoLink, videoName,setVideoName,videosList, setVideosList]}
+          state={[
+            videoLink,
+            setVideoLink,
+            videoName,
+            setVideoName,
+            videosList,
+            setVideosList,
+          ]}
         />
-        <button>Create Course</button>
+        <button onClick={(event) => onSave(event)}>Submit</button>
       </form>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { uploadFile } from "../scripts/cloudStorage";
+import FilesList from "./FilesList";
 
 export default function MultipleUploadField({ setFiles, files }) {
   const onDrop = useCallback(
@@ -14,16 +15,24 @@ export default function MultipleUploadField({ setFiles, files }) {
     },
     [setFiles]
   );
+  function onDelete(event, file) {
+    event.preventDefault();
+    setFiles((curr) => curr.filter((item) => item.name !== file));
+  }
 
-  const file = files.map((file, index) => <li key={index}>{file.name}</li>);
+  const file = files.map((file, index) => (
+    <FilesList key={index} file={file} onDelete={onDelete} />
+  ));
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
   return (
-    <div {...getRootProps()}>
-      <input {...getInputProps()} />
-      <p>Drag and drop some files here, or click to select files</p>
+    <>
+      <div {...getRootProps()}>
+        <input {...getInputProps()} />
+        <p>Drag and drop some files here, or click to select files</p>
+      </div>
       <ul>{file}</ul>
-    </div>
+    </>
   );
 }

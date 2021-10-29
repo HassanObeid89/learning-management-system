@@ -9,7 +9,7 @@ const firebaseConfiguration = {
   projectId: "learning-management-syst-2a323",
   storageBucket: "learning-management-syst-2a323.appspot.com",
   messagingSenderId: "699386245884",
-  appId: "1:699386245884:web:12c0c1839fa06752041d79"
+  appId: "1:699386245884:web:12c0c1839fa06752041d79",
 };
 
 const firebaseInstance = initializeApp(firebaseConfiguration);

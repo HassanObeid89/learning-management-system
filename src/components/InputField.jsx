@@ -1,5 +1,5 @@
 import { useRef } from "react";
-export default function InputField({ options, handleChange, values }) {
+export default function InputField({ options, handleChange }) {
   const { label, instructions, placeholder, key, type } = options;
   const inputReference = useRef(null);
   return (
