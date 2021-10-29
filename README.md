@@ -68,3 +68,9 @@ The component tree allows to visualize the overall hierarchy of the project.
 The diagram covers the overal application layout:
 
 [Component tree]()
+
+### 5.5 User Flow
+
+The User Flow allows to visualize the interactions with the web app.
+
+[User Flow](https://whimsical.com/flow-chart-lms-3sYSMgXUuLLuo96iSxrLVi)
