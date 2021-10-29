@@ -60,7 +60,7 @@ export default function FormAddCourse() {
     event.preventDefault();
     const updatedCourse = {
       ...values,
-      imgUrl:course.imgUrl,
+      imgUrl: course.imgUrl,
       files: files,
       videos: videosList,
     };

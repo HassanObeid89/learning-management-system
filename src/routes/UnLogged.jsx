@@ -4,7 +4,7 @@ import { Route } from "react-router";
 //Project files
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
-import LandingPage from '../pages/LandingPage'
+import LandingPage from "../pages/LandingPage";
 export default function UnLogged() {
   return (
     <>

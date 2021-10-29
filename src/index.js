@@ -9,7 +9,7 @@ ReactDOM.render(
   <AuthProvider>
     <UserProvider>
       <CoursesProvider>
-      <App />
+        <App />
       </CoursesProvider>
     </UserProvider>
   </AuthProvider>,

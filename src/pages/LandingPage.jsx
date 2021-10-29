@@ -1,6 +1,10 @@
+//Npm package
+import { Link } from "react-router-dom";
+
+//Project files
 import LandingBar from "../components/LandingBar";
 import hero from "../assets/images/hero-LMS.png";
-import { Link } from "react-router-dom";
+
 export default function LandingPage() {
   return (
     <div>

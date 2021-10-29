@@ -1,23 +1,22 @@
 //NPM packages
-import { useState } from 'react';
-import { useHistory } from 'react-router';
-import {getDocument} from '../scripts/firestore';
+import { useState } from "react";
+import { useHistory } from "react-router";
+import { getDocument } from "../scripts/firestore";
 
 //Project files
-import signinFields from '../data/signin-fields.json'
-import InputField from '../components/InputField';
-import useForm from '../utils/useForm';
-import { useUser } from '../state/UserProvider';
-import { useAuth } from '../state/AuthProvider';
-import { signIn } from '../scripts/Authentication';
-
+import signinFields from "../data/signin-fields.json";
+import InputField from "../components/InputField";
+import useForm from "../utils/useForm";
+import { useUser } from "../state/UserProvider";
+import { useAuth } from "../state/AuthProvider";
+import { signIn } from "../scripts/Authentication";
 
 export default function SignIn() {
   const [values, handleChange] = useForm();
-  const {dispatchUser} = useUser()
-  const {setIsLogged} = useAuth()
-  const location = useHistory()
-  const [errorMessage, setErrorMessage] = useState('')
+  const { dispatchUser } = useUser();
+  const { setIsLogged } = useAuth();
+  const location = useHistory();
+  const [errorMessage, setErrorMessage] = useState("");
 
   //Methods
   async function handleSubmit(event) {
@@ -31,7 +30,7 @@ export default function SignIn() {
   async function onSuccess(uid) {
     const document = await getDocument("users", uid);
 
-    dispatchUser({type:"SET_USER",payload:document});
+    dispatchUser({ type: "SET_USER", payload: document });
     setIsLogged(true);
     location.push("/");
   }

@@ -25,7 +25,7 @@ export default function App() {
         const courses = await getCollection(path);
         dispatchCourses({ type: "SET_COURSES", payload: courses });
         // setIsLogged(true);
-        setStatus(1)
+        setStatus(1);
       } catch {
         setStatus(2);
       }
@@ -44,7 +44,7 @@ export default function App() {
         setStatus(1);
       }
     },
-    [dispatchUser,setIsLogged]
+    [dispatchUser, setIsLogged]
   );
 
   useEffect(() => {
