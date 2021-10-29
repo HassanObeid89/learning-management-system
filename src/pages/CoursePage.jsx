@@ -20,7 +20,7 @@ export default function CoursePage() {
       <h2>Files</h2>
       <ul>{filesList}</ul>
       <h2>Videos</h2>
-      {videosList}
+      <ul>{videosList}</ul>
     </div>
   );
 }

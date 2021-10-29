@@ -33,4 +33,6 @@
 .course-page .file-item a {
   color: black;
   margin-left: var(--space-medium);
+  text-decoration: none;
+  cursor: pointer;
 }
