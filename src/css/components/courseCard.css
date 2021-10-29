@@ -48,7 +48,7 @@
   text-align: center;
 }
 .courses-page main {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -75,5 +75,10 @@
         column-gap: 30px;
         row-gap: 16px;
       } 
+      .courses-page section {
+        float: right;
+        margin-right: 80px;
+        margin-top: 100px;
+      }
   }
 }

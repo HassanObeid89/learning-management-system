@@ -15,3 +15,22 @@
   text-align: left;
   padding: var(--space-big);
 }
+
+@media screen and (min-width:960px){
+  .landing-page {
+    display: flex;
+    align-items: center;
+  }
+  .landing-page section {
+    margin-left: 48px;
+  }
+  .landing-page p {
+    letter-spacing: 0.19em;
+    font-weight: 900;
+    font-size: var(--font-title-desktop);
+    line-height: 35px;
+    text-align: center;
+    padding: var(--space-big);
+    width: 450px;
+  }
+}
