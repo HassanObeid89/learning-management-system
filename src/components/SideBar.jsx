@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 
 //React Icons
 import { IoHome } from "react-icons/io5";
-import { GiBlackBook, GiEntryDoor } from "react-icons/gi";
+import { GiEntryDoor } from "react-icons/gi";
 import { FaVideo } from "react-icons/fa";
 import { FcCalendar } from "react-icons/fc";
 import { MdDoubleArrow } from "react-icons/md";
@@ -32,12 +32,6 @@ export default function SideBar() {
           <Link to="/" className="nav-link">
             <IoHome />
             <span className="link-text">Home</span>
-          </Link>
-        </li>
-        <li>
-          <Link to="/student-page" className="nav-link">
-            <GiBlackBook />
-            <span className="link-text">Courses</span>
           </Link>
         </li>
         <li>
