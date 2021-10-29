@@ -51,6 +51,7 @@ export default function SignIn() {
         {errorMessage}
         <button>Sign in</button>
         <Link to='/forgot-password'>Forgot Password</Link>
+        <Link to='/sign-up'>Sign Up</Link>
       </form>
     </div>
   );
