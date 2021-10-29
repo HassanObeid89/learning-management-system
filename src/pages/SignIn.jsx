@@ -10,6 +10,7 @@ import useForm from "../utils/useForm";
 import { useUser } from "../state/UserProvider";
 import { useAuth } from "../state/AuthProvider";
 import { signIn } from "../scripts/Authentication";
+import { Link } from "react-router-dom";
 
 export default function SignIn() {
   const [values, handleChange] = useForm();
@@ -49,6 +50,7 @@ export default function SignIn() {
         {inputFields}
         {errorMessage}
         <button>Sign in</button>
+        <Link to='/forgot-password'>Forgot Password</Link>
       </form>
     </div>
   );
