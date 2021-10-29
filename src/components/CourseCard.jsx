@@ -1,20 +1,34 @@
 import { Link } from "react-router-dom";
-import {useUser} from '../state/UserProvider'
+import { useUser } from "../state/UserProvider";
+import { FaArrowRight } from "react-icons/fa";
+import { ImBin } from "react-icons/im";
+import { MdModeEditOutline } from "react-icons/md";
 
 export default function CourseCard({ course, onDelete }) {
   const { id, name, description, imgUrl } = course;
-  const {user} = useUser()
+  const { user } = useUser();
   return (
-    <div>
-      <li>
-        <img src={imgUrl} alt="" />
-        <h3>{name}</h3>
-        <p>{description}</p>
-        <Link to={`/course-page/${id}`}>Go</Link>
-        <br />
-        {user.role === 'teacher' && <Link to={`/add-course/${id}`}>Edit</Link>}
-        {user.role === 'teacher' &&<button onClick={() => onDelete(id)}>Delete</button>}
-      </li>
-    </div>
+    <li>
+      <img src={imgUrl} alt="" />
+      <main>
+      <h3>{name}</h3>
+      <p>{description}</p>
+      </main>
+      <footer>
+        {user.role === "teacher" && (
+          <button className='round-btn' onClick={() => onDelete(id)}>
+            <ImBin />
+          </button>
+        )}
+        {user.role === "teacher" && (
+          <Link className='round-btn' to={`/add-course/${id}`}>
+            <MdModeEditOutline />
+          </Link>
+        )}
+        <Link className='round-btn' to={`/course-page/${id}`}>
+          <FaArrowRight />
+        </Link>
+      </footer>
+    </li>
   );
 }

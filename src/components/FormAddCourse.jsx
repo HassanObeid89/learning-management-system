@@ -59,8 +59,8 @@ export default function FormAddCourse() {
   async function onUpdate(event) {
     event.preventDefault();
     const updatedCourse = {
-      ...values,
-      imgUrl: course.imgUrl,
+      ...values,//need to fix this bug.
+      imgUrl: course.imgUrl, //need to fix this bug.
       files: files,
       videos: videosList,
     };
@@ -71,18 +71,18 @@ export default function FormAddCourse() {
   }
 
   return (
-    <div>
+    <div className='add-course'>
+      <form>
       <p>
         Create new course by adding videos, slides, pdf and assignments for your
         students.
       </p>
-      <form>
         <InputImage
           imgUrl={values.imgUrl || course.imgUrl}
           onChange={onChange}
         />
         <label>
-          Course Name
+          <span>Course Name</span>
           <input
             placeholder="React"
             type="text"
@@ -91,7 +91,7 @@ export default function FormAddCourse() {
           />
         </label>
         <label>
-          Description
+          <span>Description</span>
           <input
             placeholder="The Most Populer JavaScript Library "
             type="text"
@@ -112,7 +112,8 @@ export default function FormAddCourse() {
             setVideosList,
           ]}
         />
-        <button onClick={(event) => onSave(event)}>Submit</button>
+        <button className='button-main' onClick={(event) => onSave(event)}>Submit</button>
+        <button onClick={()=>location.push('/')} className='button-secondary'>Cancel</button>
       </form>
     </div>
   );

@@ -7,11 +7,14 @@ import hero from "../assets/images/hero-LMS.png";
 
 export default function LandingPage() {
   return (
-    <div>
-        <p>Build Your Skills With Flexible Online Courses</p>
-        <Link to="/sign-up">Sign Up</Link>
-
+    <div className='landing-page'>
+      <p>
+        Build Your Skills! With Flexible Online Programing  Courses
+      </p>
       <img src={hero} alt="" />
+      <Link className="button-main" to="/sign-up">
+        Sign Up
+      </Link>
     </div>
   );
 }

@@ -44,11 +44,11 @@ export default function SignUp() {
 
   return (
     <div>
-      <h1>SignUp</h1>
       <form onSubmit={handleSubmit}>
+        <h2>Start Learning . . .</h2>
         {inputFields}
         {errorMessage}
-        <button>Create Account</button>
+        <button className="button-secondary ">Create Account</button>
       </form>
     </div>
   );
