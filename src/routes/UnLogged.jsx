@@ -11,7 +11,7 @@ import LandingBar from "../components/LandingBar";
 export default function UnLogged() {
   return (
     <>
-      <LandingBar/>
+      <LandingBar />
       <Route component={LandingPage} exact path="/" />
       <Route component={SignIn} path="/sign-in" />
       <Route component={SignUp} path="/sign-up" />

@@ -6,7 +6,7 @@ export default function ForgotPassword() {
   const emailRef = useRef();
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
-  
+
   async function onReset(event) {
     event.preventDefault();
     try {
@@ -15,20 +15,27 @@ export default function ForgotPassword() {
       await resetPassword(emailRef.current.value);
       setMessage("Check your inbox for further instructions");
     } catch {
-        setError("Failed to reset password")
+      setError("Failed to reset password");
     }
   }
 
   return (
-    <form className='reset-password'>
+    <form className="reset-password">
       <p>Reset your password by typing your Email. </p>
       <label>
         <span>Email</span>
-        <input type="email" ref={emailRef} placeholder='example@example.com' required />
+        <input
+          type="email"
+          ref={emailRef}
+          placeholder="example@example.com"
+          required
+        />
       </label>
       {error}
       {message}
-      <button className='button-main' onClick={onReset}>Reset Password</button>
+      <button className="button-main" onClick={onReset}>
+        Reset Password
+      </button>
     </form>
   );
 }

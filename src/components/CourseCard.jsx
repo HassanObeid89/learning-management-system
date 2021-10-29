@@ -11,21 +11,21 @@ export default function CourseCard({ course, onDelete }) {
     <li>
       <img src={imgUrl} alt="" />
       <main>
-      <h3>{name}</h3>
-      <p>{description}</p>
+        <h3>{name}</h3>
+        <p>{description}</p>
       </main>
       <footer>
         {user.role === "teacher" && (
-          <button className='round-btn' onClick={() => onDelete(id)}>
+          <button className="round-btn" onClick={() => onDelete(id)}>
             <ImBin />
           </button>
         )}
         {user.role === "teacher" && (
-          <Link className='round-btn' to={`/add-course/${id}`}>
+          <Link className="round-btn" to={`/add-course/${id}`}>
             <MdModeEditOutline />
           </Link>
         )}
-        <Link className='round-btn' to={`/course-page/${id}`}>
+        <Link className="round-btn" to={`/course-page/${id}`}>
           <FaArrowRight />
         </Link>
       </footer>

@@ -4,16 +4,15 @@
   object-fit: cover;
   height: 250px;
 }
-.course-page{
+.course-page {
   margin-bottom: 100px;
-  
 }
-.course-page h2{
-    margin-top: var(--space-big);
-    text-align: left;
-    margin-left: 40px;
-    font-weight: 300;
-    max-width: 450px;
+.course-page h2 {
+  margin-top: var(--space-big);
+  text-align: left;
+  margin-left: 40px;
+  font-weight: 300;
+  max-width: 450px;
 }
 .course-page ul {
   background: #ffffff;
@@ -25,7 +24,7 @@
   margin: 0 auto;
 }
 .course-page .file-item {
-    display: flex;
+  display: flex;
   align-items: center;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -46,9 +45,8 @@
   cursor: pointer;
 }
 
-@media screen and (min-width:960px) {
-  .course-page h2{
+@media screen and (min-width: 960px) {
+  .course-page h2 {
     margin: 0 auto;
-
-}
+  }
 }

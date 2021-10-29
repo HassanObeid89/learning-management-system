@@ -1,10 +1,17 @@
 .landing-page img {
-  width: 100%;
+  width: 80%;
+  margin: 20px auto;
+  height: 50%;
+  max-width: 460px;
 }
 
 .landing-page {
-  height: 89vh;
-  padding: var(--space-big);
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-page:nth-child(even) {
+  flex-direction: column-reverse;
 }
 
 .landing-page p {
@@ -12,14 +19,16 @@
   font-weight: 900;
   font-size: var(--font-title-mobile);
   line-height: 35px;
-  text-align: left;
   padding: var(--space-big);
 }
 
-@media screen and (min-width:960px){
+@media screen and (min-width: 960px) {
   .landing-page {
-    display: flex;
+    flex-direction: row;
     align-items: center;
+  }
+  .landing-page:nth-child(even) {
+    flex-direction: none;
   }
   .landing-page section {
     margin-left: 48px;

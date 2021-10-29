@@ -3,7 +3,7 @@
   position: relative;
   margin-bottom: var(--space-big);
 }
-.input-image{
+.input-image {
   margin: 0 auto;
   width: 60%;
   text-align: center;
@@ -22,8 +22,7 @@
   height: 100%;
   object-fit: cover;
   cursor: pointer;
-  background-color:var(--color-gray-dark);
-
+  background-color: var(--color-gray-dark);
 }
 
 .image-chooser span {
@@ -31,7 +30,7 @@
   position: absolute;
   top: -100%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   z-index: 100;
   display: none;
   font-weight: bold;

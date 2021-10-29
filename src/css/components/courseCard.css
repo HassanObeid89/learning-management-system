@@ -69,16 +69,16 @@
   .courses-page li {
     max-width: 300px;
   }
-  @media screen and (min-width:940px){
+  @media screen and (min-width: 940px) {
     .courses-page ul {
-        grid-template-columns: repeat(3, 1fr);
-        column-gap: 30px;
-        row-gap: 16px;
-      } 
-      .courses-page section {
-        float: right;
-        margin-right: 80px;
-        margin-top: 100px;
-      }
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 30px;
+      row-gap: 16px;
+    }
+    .courses-page section {
+      float: right;
+      margin-right: 80px;
+      margin-top: 100px;
+    }
   }
 }

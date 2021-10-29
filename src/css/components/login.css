@@ -1,5 +1,5 @@
 input {
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-style: none;
   padding: 15px 20px;
@@ -43,19 +43,19 @@ form {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-form a{
-    color: gray;
+form a {
+  color: gray;
 }
 
 form .button-main {
   width: 100%;
 }
 
-form .button-secondary{
+form .button-secondary {
   width: 100%;
 }
 
-.reset-password p{
+.reset-password p {
   width: 80%;
   margin-bottom: var(--space-big);
 }
