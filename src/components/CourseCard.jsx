@@ -16,7 +16,7 @@ export default function CourseCard({ course, onDelete }) {
       </main>
       <footer>
         {user.role === "teacher" && (
-          <button className='round-btn ' onClick={() => onDelete(id)}>
+          <button className='round-btn' onClick={() => onDelete(id)}>
             <ImBin />
           </button>
         )}

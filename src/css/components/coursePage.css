@@ -1,7 +1,9 @@
 .hero {
   width: 100%;
 }
-
+.course-page{
+  margin-bottom: 100px;
+}
 .course-page h2{
     margin-top: var(--space-big);
     text-align: left;
