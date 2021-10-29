@@ -25,6 +25,7 @@ export function AuthProvider({ children }) {
     onAuthStateChanged(authInstance, (user) => {
       if (user) dispatchUid({ type: "SET_UID", payload: user.uid });
       else dispatchUid({ type: "SET_UID", payload: "no user" });
+      
     });
   }, []);
 

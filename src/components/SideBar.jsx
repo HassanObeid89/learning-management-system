@@ -17,7 +17,7 @@ export default function SideBar() {
    await logout();
 
     setIsLogged(false);
-    location.push("/sign-in");
+    location.push("/");
   }
   return (
     <nav className="navbar">

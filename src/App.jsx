@@ -24,12 +24,13 @@ export default function App() {
       try {
         const courses = await getCollection(path);
         dispatchCourses({ type: "SET_COURSES", payload: courses });
-        setIsLogged(true);
+        // setIsLogged(true);
+        setStatus(1)
       } catch {
         setStatus(2);
       }
     },
-    [dispatchCourses,setIsLogged]
+    [dispatchCourses]
   );
 
   const fetchUser = useCallback(
@@ -39,11 +40,11 @@ export default function App() {
       } else if (uid !== "") {
         const user = await getDocument(path, uid);
         dispatchUser({ type: "SET_USER", payload: user });
-
+        setIsLogged(true);
         setStatus(1);
       }
     },
-    [dispatchUser]
+    [dispatchUser,setIsLogged]
   );
 
   useEffect(() => {

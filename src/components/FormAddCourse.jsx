@@ -51,7 +51,6 @@ export default function FormAddCourse() {
     const id = await createDocument("courses", newCourse);
     newCourse.id = id;
     dispatchCourses({ type: "ADD_COURSE", payload: newCourse });
-    console.log(newCourse);
     alert("Course Added");
     setValues({});
     setFiles([]);
@@ -68,7 +67,6 @@ export default function FormAddCourse() {
     await updateDocument("courses", updatedCourse, course.id);
     updatedCourse.id = course.id;
     dispatchCourses({ type: "UPDATE_COURSE", payload: updatedCourse });
-    console.log(updatedCourse);
     alert("Course updated");
   }
 

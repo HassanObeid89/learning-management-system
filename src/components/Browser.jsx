@@ -6,6 +6,7 @@ import UnLogged from "../routes/UnLogged";
 //Project files
 
 export default function Browser({ isLogged }) {
+
   return (
     <BrowserRouter>
       <Switch>{isLogged ? <Logged /> : <UnLogged />}</Switch>
