@@ -30,7 +30,6 @@ export default function ForgotPassword() {
       {error}
       {message}
       <button onClick={onReset}>Reset Password</button>
-      <Link to='/sign-in'>Sign In</Link>
     </form>
   );
 }
