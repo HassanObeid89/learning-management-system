@@ -47,7 +47,7 @@ export default function SignIn() {
     <form onSubmit={handleSubmit}>
       <h2>Start Learning . . .</h2>
       {inputFields}
-      {errorMessage}
+      <span className="error-message">{errorMessage}</span>
       <Link to="/forgot-password">Forget Password?</Link>
       <button className="button-main">Sign in</button>
       <Link to="/sign-up">Sign Up</Link>
