@@ -9,7 +9,7 @@ export default function LandingPage() {
   return (
     <div>
         <p>Build Your Skills With Flexible Online Courses</p>
-        <Link to="/sign-up">Sign Up</Link>
+        <Link className='button-main' to="/sign-up">Sign Up</Link>
 
       <img src={hero} alt="" />
     </div>
