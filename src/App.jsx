@@ -3,22 +3,27 @@ import { useState, useCallback, useEffect } from "react";
 import { getDocument } from "./scripts/firestore";
 
 //Project files
-import "./css/style.css";
+import Browser from "./components/Browser";
 import { useAuth } from "./state/AuthProvider";
 import { useUser } from "./state/UserProvider";
-import Browser from "./components/Browser";
 import { getCollection } from "./scripts/firestore";
 import { useCourse } from "./state/CoursesProvider";
+import "./css/style.css";
 
 export default function App() {
   // Global state
   const { uid, setIsLogged, isLogged } = useAuth();
   const { dispatchUser } = useUser();
   const { dispatchCourses } = useCourse();
+
   // Local state
   const [status, setStatus] = useState(1); // 0 pending, 1 ready, 2 error
 
   // Methods
+  // Refactorability, Architecture -1
+  // Why are we fetching courses if we aren't logging yet?
+  // In this example is "innofensive" but what if is a private education, we can leak data even if you arent a valid user
+  // Worst, what if we are working on a bank, we are getting sensitive data even if we aren't valid users.
   const fetchCourses = useCallback(
     async (path) => {
       try {
@@ -29,6 +34,7 @@ export default function App() {
         setStatus(2);
       }
     },
+
     [dispatchCourses]
   );
 

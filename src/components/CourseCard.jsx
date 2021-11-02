@@ -10,10 +10,13 @@ export default function CourseCard({ course, onDelete }) {
   return (
     <li>
       <img src={imgUrl} alt="" />
+      {/* -1 Main is only used 1 per page to indicate the browser the most important element to focus its attention. Ideal for accesiblity readers */}
       <main>
         <h3>{name}</h3>
         <p>{description}</p>
       </main>
+
+      {/* You can refactor this by creating a component called RoundIconButton and pass only the onClick and the icon (the className is written inside the component) */}
       <footer>
         {user.role === "teacher" && (
           <button className="round-btn" onClick={() => onDelete(id)}>
