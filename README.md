@@ -7,8 +7,10 @@ This is a Learnin management system web app, that allow Students to learn how to
 User name: teacher@teacher.com
 Password: 12345678
 
-The project is done with the latest version of React and uses functional components with Hooks for better modularity in case it needs to be expanded and firebase services for backend.
 [Visit WebSite](https://learning-management-syst-2a323.web.app/).
+
+The project is done with the latest version of React and uses functional components with Hooks for better modularity in case it needs to be expanded and firebase services for backend.
+
 ---
 
 ## 2. Setup
