@@ -6,11 +6,15 @@ import { useCourse } from "../state/CoursesProvider";
 import FileItem from "../components/FileItem";
 import VideoItem from "../components/VideoItem";
 
+// This is a very clean page, good job!
 export default function CoursePage() {
   const { courses } = useCourse();
   const { id } = useParams();
   const course = courses.find((course) => course.id === id);
+
   const { imgUrl, name, description } = course;
+
+  // Use uppercase to know they are components
   const filesList = course.files.map((files) => <FileItem data={files} />);
   const videosList = course.videos.map((video) => <VideoItem data={video} />);
 
